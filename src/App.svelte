@@ -1,5 +1,6 @@
 <script>
 	import WlHeader from './WlHeader.svelte'
+
 	import WlItemsShow from './WlItemsShow.svelte'
 	import WlItemUpdate from './WlItemUpdate.svelte'
 	import WlItemsStarted from './WlItemsStarted.svelte'
@@ -41,14 +42,14 @@
 					break
 
 				default:
-					init()
+					await init()
 					break
 			}
 		}
 	})
 
 	onDestroy(() => {
-		unsubscribe()
+		unsubscribe
 	})
 
 	async function init() {
@@ -81,7 +82,7 @@
 		$locale = setting.language || defaultSetting.language
 	}
 
-	async function archiveScreen() {
+	function archiveScreen() {
 		current = WlItemsArchive
 		props = {}
 	}
@@ -127,6 +128,15 @@
 		font-weight: 400;
 		src: local('Courgette'), local('Courgette-Regular'),
 			url('/fonts/Courgette-Regular.ttf') format('woff2');
+	}
+
+	@keyframes countdown {
+		from {
+			stroke-dashoffset: 0px;
+		}
+		to {
+			stroke-dashoffset: 72px;
+		}
 	}
 	.wl_container {
 		@apply max-h-400 w-280 overflow-y-auto overflow-x-hidden;

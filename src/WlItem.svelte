@@ -1,25 +1,25 @@
 <script>
+	import { createEventDispatcher } from 'svelte'
+
 	import { routeTo, routeRefresh, location } from './router.js'
 	import { update } from './store/wlitems.js'
 
-	export let wlItem
+	const dispatch = createEventDispatcher()
 
-	let clearTimer = null
+	export let wlItem
 
 	function handleEdit() {
 		routeTo(location.edit, wlItem)
 	}
 
-	function handleUpdate() {
-		if (clearTimer === null) {
-			clearTimer = setTimeout(async () => {
-				await update(wlItem)
-				clearTimer = null
-				routeRefresh()
-			}, 1000)
+	async function handleUpdate() {
+		if (wlItem.done) {
+			dispatch('done', wlItem)
+			await update(wlItem)
+			routeRefresh()
 		} else {
-			clearTimeout(clearTimer)
-			clearTimer = null
+			await update(wlItem)
+			routeRefresh()
 		}
 	}
 </script>
