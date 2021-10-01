@@ -1,6 +1,6 @@
 {
 	"manifest_version": 2,
-	"name": "The last wishlist",
+	"name": "wishlist",
 	"description": "The latest wishlist is an easy way to visualize your upcoming purchases. No advertising or tampering with your privacy. Just your wishlist. Make your dream come true! ",
 	"version": "1.2.2",
 	"permissions": ["storage", "tabs"],
