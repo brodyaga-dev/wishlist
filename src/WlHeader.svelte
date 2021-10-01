@@ -20,12 +20,27 @@
 			</div>
 		{:else}
 			<div class="title_back__control">
-				<WlButtonBase href={location.archive}>&#9842</WlButtonBase>
+				<WlButtonBase href={location.archive}>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						class="archive-svg h-6 w-6"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
+						/>
+					</svg>
+				</WlButtonBase>
 			</div>
 		{/if}
 	</div>
 
-	<div class="title_name {isMainScreen ? 'ml-2' : ''}">
+	<div class="title_name">
 		<slot />
 	</div>
 
@@ -39,6 +54,12 @@
 </div>
 
 <style lang="postcss">
+	.archive-svg {
+		color: rgb(230, 230, 230);
+		margin-left: auto;
+		margin-right: auto;
+	}
+
 	.title_base {
 		@apply h-12 bg-blue-500 flex items-center justify-center font-courgette text-2xl text-white;
 	}
@@ -46,7 +67,7 @@
 		@apply flex-100 text-center;
 	}
 	.title_back__control {
-		@apply text-center cursor-pointer font-sans;
+		@apply text-center cursor-pointer font-sans flex;
 	}
 	.title_back {
 		@apply w-28;
